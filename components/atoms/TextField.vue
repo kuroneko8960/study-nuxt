@@ -63,13 +63,19 @@ export default class TextField extends Vue {
     font-size: 0.9em;
     color: #616161;
     background-color: #f5f5f5;
+    transition: border-color 0.3s;
 
     &::placeholder {
-      color: #9e9e9e;
+      color: #bdbdbd;
     }
 
     &:focus {
       border-bottom-color: #9e9e9e;
+      color: #212121;
+
+      &::placeholder {
+        color: #9e9e9e;
+      }
     }
 
     &--full-width {
