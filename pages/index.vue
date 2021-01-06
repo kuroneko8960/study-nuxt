@@ -6,6 +6,7 @@
     <div class="index-page__body">
       <TaskListView />
     </div>
+    <TaskEditModal />
   </div>
 </template>
 
