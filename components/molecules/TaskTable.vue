@@ -9,8 +9,7 @@
     <tbody class="task-table__body">
       <tr v-for="idx in 5" :key="idx">
         <td>
-          <Checkbox />
-          Task {{ idx }}
+          <Checkbox :label="`Task ${idx}`" />
         </td>
         <td>
           <IconButton icon="edit" />
