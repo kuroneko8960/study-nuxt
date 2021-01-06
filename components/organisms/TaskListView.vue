@@ -8,3 +8,11 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.task-list-view {
+  &__filter {
+    margin-bottom: 1em;
+  }
+}
+</style>
