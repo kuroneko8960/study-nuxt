@@ -7,11 +7,29 @@
       <TaskListView />
     </div>
     <div class="index-page__action">
-      <IconButton icon="add" variant="circle" />
+      <IconButton icon="add" variant="circle" @action="newTask" />
     </div>
-    <TaskEditModal />
+    <TaskEditModal :is-show="isOpenModal" @cancel="closeModal" />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'nuxt-property-decorator'
+
+@Component
+export default class IndexPage extends Vue {
+  isOpenModal = false
+
+  newTask() {
+    this.isOpenModal = true
+  }
+
+  closeModal() {
+    this.isOpenModal = false
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .index-page {

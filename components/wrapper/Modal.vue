@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes()">
+  <div :class="classes">
     <div class="modal__content">
       <slot />
     </div>
@@ -15,7 +15,7 @@ export default class Modal extends Vue {
   @Prop({ type: Boolean })
   readonly isShow!: boolean
 
-  classes() {
+  get classes() {
     return {
       modal: true,
       'modal--show': this.isShow,

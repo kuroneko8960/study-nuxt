@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes()">
+  <button :class="classes" @click.prevent="emitAction">
     <div class="action-button__body">
       <slot />
     </div>
@@ -15,11 +15,15 @@ export default class ActionButton extends Vue {
   @Prop({ type: String })
   readonly variant!: '' | 'primary'
 
-  classes() {
+  get classes() {
     return {
       'action-button': true,
       [`action-button--${this.variant}`]: !!this.variant,
     }
+  }
+
+  emitAction() {
+    this.$emit('action')
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes()" type="button">
+  <button :class="classes" type="button" @click.prevent="emitAction">
     <i class="material-icons">{{ icon }}</i>
   </button>
 </template>
@@ -9,18 +9,22 @@ import Vue from 'vue'
 import { Component, Prop } from 'nuxt-property-decorator'
 
 @Component
-export default class C extends Vue {
+export default class IconButton extends Vue {
   @Prop({ type: String })
   readonly icon!: string
 
   @Prop({ type: String })
   readonly variant!: '' | 'circle'
 
-  classes() {
+  get classes() {
     return {
       'icon-button': true,
       [`icon-button--${this.variant}`]: !!this.variant,
     }
+  }
+
+  emitAction() {
+    this.$emit('action')
   }
 }
 </script>
