@@ -1,10 +1,12 @@
 <template>
   <div class="text-filter">
-    <div class="text-filter__icon">
-      <i class="material-icons">filter_alt</i>
-    </div>
     <div class="text-filter__input">
-      <TextField v-model="value" :placeholder="placeholder" full-width />
+      <TextField
+        v-model="value"
+        :placeholder="placeholder"
+        icon="filter_alt"
+        full-width
+      />
     </div>
   </div>
 </template>
