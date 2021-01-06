@@ -1,6 +1,8 @@
 <template>
   <div class="default-layout">
-    <div class="default-layout__header">Header</div>
+    <div class="default-layout__header">
+      <AppHeader />
+    </div>
     <div class="default-layout__container">
       <Nuxt />
     </div>
