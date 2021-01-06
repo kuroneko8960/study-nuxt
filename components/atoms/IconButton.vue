@@ -14,3 +14,14 @@ export default class C extends Vue {
   readonly icon!: string
 }
 </script>
+
+<style lang="scss" scoped>
+.icon-button {
+  color: #616161;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #2196f3;
+  }
+}
+</style>
