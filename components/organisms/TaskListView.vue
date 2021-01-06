@@ -1,6 +1,10 @@
 <template>
   <div class="task-list-view">
-    <SearchForm />
-    <TaskList />
+    <div class="task-list-view__filter">
+      <TextFilter />
+    </div>
+    <div class="task-list-view__list">
+      <TaskList />
+    </div>
   </div>
 </template>
