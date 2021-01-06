@@ -18,10 +18,11 @@
   &__container {
     max-width: 64rem;
     margin: 0 auto;
+    padding: 0 1em;
   }
 
   &__logo {
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     font-size: 1.25em;
   }
 }
