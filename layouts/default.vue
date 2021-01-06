@@ -11,9 +11,6 @@
 
 <style lang="scss" scoped>
 .default-layout {
-  &__header {
-  }
-
   &__container {
     max-width: 64rem;
     margin: 0 auto;
