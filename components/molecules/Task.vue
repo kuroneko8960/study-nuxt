@@ -1,8 +1,7 @@
 <template>
   <div class="task">
     <div class="task__content">
-      <Checkbox />
-      {{ content }}
+      <Checkbox :label="content" is-clear />
     </div>
     <div class="task__actions">
       <IconButton icon="edit" />
