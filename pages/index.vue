@@ -6,6 +6,9 @@
     <div class="index-page__body">
       <TaskListView />
     </div>
+    <div class="index-page__action">
+      <IconButton icon="add" variant="circle" />
+    </div>
     <TaskEditModal />
   </div>
 </template>
@@ -22,6 +25,13 @@
     }
 
     margin-bottom: 1rem;
+  }
+
+  &__action {
+    position: fixed;
+    z-index: 100;
+    bottom: 2rem;
+    right: 2rem;
   }
 }
 </style>
