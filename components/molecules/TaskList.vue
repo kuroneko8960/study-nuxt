@@ -8,7 +8,9 @@
 
 <style lang="scss" scoped>
 .task-list {
+  display: block;
   margin: -1em 0;
+  overflow: hidden;
 
   &__item {
     margin: 1em 0;
