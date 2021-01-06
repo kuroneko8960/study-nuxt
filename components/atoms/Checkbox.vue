@@ -1,7 +1,9 @@
 <template>
   <label class="checkbox">
-    <input type="checkbox" />
-    <span class="checkbox__label">{{ label }}</span>
+    <input class="checkbox__input" type="checkbox" />
+    <div class="checkbox__body">
+      <span class="checkbox__label">{{ label }}</span>
+    </div>
   </label>
 </template>
 
