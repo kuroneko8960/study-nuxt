@@ -29,7 +29,7 @@ export default class TasksModule extends VuexModule {
 
   @Mutation
   addTask(content: string) {
-    this.list.push({ id: this.maxId++, content, isCompleted: true })
+    this.list.unshift({ id: this.maxId++, content, isCompleted: false })
   }
 
   @Mutation

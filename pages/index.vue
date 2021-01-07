@@ -9,7 +9,11 @@
     <div class="index-page__action">
       <IconButton icon="add" variant="circle" @action="newTask" />
     </div>
-    <TaskEditModal :is-show="isOpenModal" @cancel="closeModal" />
+    <TaskEditModal
+      :is-show="isOpenModal"
+      @commit="addTask"
+      @cancel="closeModal"
+    />
   </div>
 </template>
 
@@ -27,6 +31,11 @@ export default class IndexPage extends Vue {
 
   closeModal() {
     this.isOpenModal = false
+  }
+
+  addTask(content: string) {
+    this.$store.commit('tasks/addTask', content)
+    this.closeModal()
   }
 }
 </script>

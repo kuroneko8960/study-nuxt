@@ -41,6 +41,11 @@ export default class ActionButton extends Vue {
     transform: translateY(1px);
   }
 
+  &:disabled {
+    background-color: #9e9e9e;
+    color: #707070;
+  }
+
   &--primary {
     background-color: #2196f3;
     color: #ffffff;

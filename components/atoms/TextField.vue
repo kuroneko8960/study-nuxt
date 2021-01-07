@@ -3,10 +3,12 @@
     <span v-show="label" class="text-field__label">{{ label }}</span>
     <div class="text-field__body">
       <input
-        v-model="value"
+        v-model="innerValue"
         type="text"
-        :class="inputClasses()"
+        :class="inputClasses"
         :placeholder="placeholder"
+        @keypress.prevent.enter.exact="enableEnter"
+        @keyup.prevent.enter.exact="emitEnter"
       />
       <i v-show="icon" class="text-field__icon material-icons">{{ icon }}</i>
     </div>
@@ -20,9 +22,6 @@ import { Component, Prop } from 'nuxt-property-decorator'
 @Component
 export default class TextField extends Vue {
   @Prop({ type: String })
-  readonly value!: string
-
-  @Prop({ type: String })
   readonly label!: string
 
   @Prop({ type: String })
@@ -34,12 +33,41 @@ export default class TextField extends Vue {
   @Prop({ type: Boolean, default: false })
   readonly fullWidth!: boolean
 
-  inputClasses() {
+  @Prop({ type: String })
+  readonly value!: string
+
+  canEnter: boolean = false
+
+  get innerValue() {
+    return this.value
+  }
+
+  set innerValue(value) {
+    this.$emit('input', value)
+  }
+
+  get inputClasses() {
     return {
       'text-field__input': true,
       'text-field__input--full-width': this.fullWidth,
       'text-field__input--with-icon': !!this.icon,
     }
+  }
+
+  enableEnter() {
+    this.canEnter = true
+  }
+
+  emitEnter() {
+    if (!this.canEnter) return
+
+    if (!this.value) {
+      this.canEnter = false
+      return
+    }
+
+    this.$emit('enter', this.value)
+    this.canEnter = false
   }
 }
 </script>
