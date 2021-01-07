@@ -58,4 +58,9 @@ export default class TasksModule extends VuexModule {
       this.list.splice(index, 1)
     }
   }
+
+  @Mutation
+  trimTasks() {
+    this.list = this.list.filter((task) => !task.isCompleted)
+  }
 }

@@ -36,6 +36,10 @@ export default class TaskListView extends Vue {
   changeFilter(filter: string) {
     this.filter = filter
   }
+
+  trimTasks() {
+    this.$store.commit('tasks/trimTasks')
+  }
 }
 </script>
 
