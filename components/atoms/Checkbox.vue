@@ -1,6 +1,6 @@
 <template>
   <label class="checkbox">
-    <input class="checkbox__input" type="checkbox" />
+    <input class="checkbox__input" type="checkbox" :checked="checked" />
     <span :class="labelClasses()">{{ label }}</span>
   </label>
 </template>
@@ -16,6 +16,9 @@ export default class Checkbox extends Vue {
 
   @Prop({ type: Boolean })
   readonly isClear!: boolean
+
+  @Prop({ type: Boolean, default: false })
+  readonly checked!: boolean
 
   labelClasses() {
     return {

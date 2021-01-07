@@ -1,7 +1,7 @@
 <template>
   <div class="task">
     <div class="task__content">
-      <Checkbox :label="content" is-clear />
+      <Checkbox :label="task.content" :checked="task.isCompleted" is-clear />
     </div>
     <div class="task__actions">
       <IconButton icon="edit" />
@@ -13,11 +13,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Prop } from 'nuxt-property-decorator'
+import { TaskRecord } from '~/store/tasks'
 
 @Component
 export default class Task extends Vue {
-  @Prop({ type: String })
-  readonly content!: string
+  @Prop({ type: Object })
+  readonly task!: TaskRecord
 }
 </script>
 

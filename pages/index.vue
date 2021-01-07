@@ -4,7 +4,7 @@
       <h1>タスク一覧</h1>
     </div>
     <div class="index-page__body">
-      <TaskListView />
+      <TaskListView :tasks="$store.state.tasks.list" />
     </div>
     <div class="index-page__action">
       <IconButton icon="add" variant="circle" @action="newTask" />
