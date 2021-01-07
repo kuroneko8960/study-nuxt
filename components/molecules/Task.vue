@@ -10,7 +10,7 @@
     </div>
     <div class="task__actions">
       <IconButton icon="edit" />
-      <IconButton icon="delete" />
+      <IconButton icon="delete" @action="deleteTask" />
     </div>
   </div>
 </template>
@@ -27,6 +27,10 @@ export default class Task extends Vue {
 
   toggleTask(isCompleted: boolean) {
     this.$store.commit('tasks/updateTask', { id: this.task.id, isCompleted })
+  }
+
+  deleteTask() {
+    this.$store.commit('tasks/deleteTask', this.task.id)
   }
 }
 </script>
