@@ -3,6 +3,7 @@
     <ModalHead> タスクの追加 </ModalHead>
     <ModalBody>
       <TextField
+        ref="textFieldContent"
         v-model="content"
         placeholder="タスクを入力"
         full-width
@@ -24,7 +25,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component, Prop } from 'nuxt-property-decorator'
+import { Component, Prop, Ref, Watch } from 'nuxt-property-decorator'
+import TextField from '../atoms/TextField.vue'
 
 @Component
 export default class TaskEditModal extends Vue {
@@ -32,6 +34,9 @@ export default class TaskEditModal extends Vue {
   readonly isShow!: boolean
 
   content: string = ''
+
+  @Ref('textFieldContent')
+  refTextFieldContent!: TextField
 
   get isValidated() {
     return this.content
@@ -47,6 +52,13 @@ export default class TaskEditModal extends Vue {
   emitCancel() {
     this.$emit('cancel')
     this.content = ''
+  }
+
+  @Watch('isShow')
+  onChangeIsShow(val: boolean) {
+    if (val) {
+      this.refTextFieldContent.focus()
+    }
   }
 }
 </script>

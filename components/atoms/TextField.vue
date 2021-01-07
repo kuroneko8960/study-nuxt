@@ -3,6 +3,7 @@
     <span v-show="label" class="text-field__label">{{ label }}</span>
     <div class="text-field__body">
       <input
+        ref="input"
         v-model="innerValue"
         type="text"
         :class="inputClasses"
@@ -17,7 +18,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component, Prop } from 'nuxt-property-decorator'
+import { Component, Prop, Ref } from 'nuxt-property-decorator'
 
 @Component
 export default class TextField extends Vue {
@@ -37,6 +38,9 @@ export default class TextField extends Vue {
   readonly value!: string
 
   canEnter: boolean = false
+
+  @Ref('input')
+  refInput!: HTMLInputElement
 
   get innerValue() {
     return this.value
@@ -68,6 +72,10 @@ export default class TextField extends Vue {
 
     this.$emit('enter', this.value)
     this.canEnter = false
+  }
+
+  focus() {
+    setTimeout(() => this.refInput.focus(), 0)
   }
 }
 </script>
