@@ -2,7 +2,7 @@
   <div class="text-filter">
     <div class="text-filter__input">
       <TextField
-        v-model="value"
+        v-model="filter"
         :placeholder="placeholder"
         icon="filter_alt"
         full-width
@@ -13,15 +13,21 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component, Prop } from 'nuxt-property-decorator'
+import { Component, Prop, Watch } from 'nuxt-property-decorator'
 
 @Component
 export default class TextFilter extends Vue {
   @Prop({ type: String })
-  readonly value!: string
-
-  @Prop({ type: String })
   readonly placeholder!: string
+
+  filter = ''
+
+  @Watch('filter', { immediate: true })
+  onChangeFilter(val: string, oldVal: string) {
+    if (val !== oldVal) {
+      this.$emit('filter', val)
+    }
+  }
 }
 </script>
 
