@@ -86,7 +86,7 @@ export default class TextField extends Vue {
   }
 
   &__input {
-    padding: 0.75rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     border-bottom: 1px solid #e0e0e0;
     font-size: 0.9em;
     color: #616161;
@@ -117,7 +117,7 @@ export default class TextField extends Vue {
 
   &__icon {
     position: absolute;
-    top: 0.5rem;
+    top: 0.25rem;
     left: 0.25rem;
     color: #9e9e9e;
   }
