@@ -1,6 +1,11 @@
 <template>
   <label class="checkbox">
-    <input class="checkbox__input" type="checkbox" :checked="checked" />
+    <input
+      class="checkbox__input"
+      type="checkbox"
+      :checked="checked"
+      @change="emitChange"
+    />
     <span :class="labelClasses()">{{ label }}</span>
   </label>
 </template>
@@ -25,6 +30,10 @@ export default class Checkbox extends Vue {
       checkbox__label: true,
       'checkbox__label--clear': this.isClear,
     }
+  }
+
+  emitChange(event: any) {
+    this.$emit('change', event.target.checked)
   }
 }
 </script>

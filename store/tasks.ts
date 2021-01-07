@@ -33,11 +33,20 @@ export default class TasksModule extends VuexModule {
   }
 
   @Mutation
-  editTask(id: number, data: { content: string; isCompleted: boolean }) {
+  updateTask({
+    id,
+    content,
+    isCompleted,
+  }: {
+    id: number
+    content: string
+    isCompleted: boolean
+  }) {
     const task = this.list.find((task) => task.id === id)
 
     if (task) {
-      Object.assign(task, data)
+      content !== undefined && (task.content = content)
+      isCompleted !== undefined && (task.isCompleted = isCompleted)
     }
   }
 

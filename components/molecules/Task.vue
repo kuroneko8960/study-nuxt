@@ -1,7 +1,12 @@
 <template>
   <div class="task">
     <div class="task__content">
-      <Checkbox :label="task.content" :checked="task.isCompleted" is-clear />
+      <Checkbox
+        :label="task.content"
+        :checked="task.isCompleted"
+        is-clear
+        @change="toggleTask"
+      />
     </div>
     <div class="task__actions">
       <IconButton icon="edit" />
@@ -19,6 +24,10 @@ import { TaskRecord } from '~/store/tasks'
 export default class Task extends Vue {
   @Prop({ type: Object })
   readonly task!: TaskRecord
+
+  toggleTask(isCompleted: boolean) {
+    this.$store.commit('tasks/updateTask', { id: this.task.id, isCompleted })
+  }
 }
 </script>
 
